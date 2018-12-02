@@ -4,6 +4,7 @@ import './App.css'
 
 class App extends Component {
   public render() {
+    if (this.hasGeo()) { this.getCurrentPosition( ) }
     return (
       <div className='App'>
         <header className='App-header'>
@@ -22,6 +23,17 @@ class App extends Component {
         </header>
       </div>
     )
+  }
+
+  private hasGeo() {
+    return 'geolocation' in navigator
+  }
+
+  private getCurrentPosition() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      alert(`${position.coords.latitude} ${position.coords.longitude}`)
+      console.log(position.coords.latitude, position.coords.longitude)
+    })
   }
 }
 
