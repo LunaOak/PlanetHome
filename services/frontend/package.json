@@ -5,8 +5,11 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "build-production": "npm-run-all build lint coverage ratchet",
+    "test": "react-scripts test --env=jsdom",
     "lint": "tslint -c tslint.json --project tsconfig.json",
-    "test": "react-scripts test",
+    "coverage": "react-scripts test --coverage --env=jsdom --no-cache",
+    "ratchet": "jest-coverage-ratchet",
     "eject": "react-scripts eject"
   },
   "dependencies": {
@@ -16,13 +19,35 @@
     "@types/react-dom": "16.0.11",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-scripts": "2.1.1",
+    "react-scripts": "^2.1.1",
     "typescript": "3.2.1"
   },
   "devDependencies": {
+    "jest-coverage-ratchet": "^0.2.3",
+    "npm-run-all": "^4.1.5",
     "tslint": "^5.11.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-react": "^3.6.0"
+  },
+  "jest": {
+    "coverageThreshold": {
+      "global": {
+        "lines": 7.14,
+        "statements": 7.14,
+        "functions": 5.88,
+        "branches": 0
+      }
+    },
+    "collectCoverageFrom": [
+      "src/**",
+      "!src/index.tsx",
+      "!src/utils/registerServiceWorker.ts"
+    ],
+    "coverageReporters": [
+      "json-summary",
+      "text",
+      "text-summary"
+    ]
   },
   "browserslist": [
     ">0.2%",
