@@ -3,37 +3,28 @@ import logo from './logo.svg'
 import './App.css'
 
 class App extends Component {
+  public state = {
+    position: {
+      lat: 0,
+      long: 0,
+    },
+    address: '',
+  }
+
   public render() {
-    if (this.hasGeo()) { this.getCurrentPosition( ) }
+    const { position, address } = this.state
     return (
       <div className='App'>
         <header className='App-header'>
           <img src={logo} className='App-logo' alt='logo' />
           <p>
-            Edit <code>src/App.tsx</code> and save to reload.
+            latitude: {position.lat} <br/>
+            longitude: {position.long} <br/>
+            address: {address}<br/>
           </p>
-          <a
-            className='App-link'
-            href='https://reactjs.org'
-            target='_blank'
-            rel='noopener noreferrer'
-          >
-            Learn React
-          </a>
         </header>
       </div>
     )
-  }
-
-  private hasGeo() {
-    return 'geolocation' in navigator
-  }
-
-  private getCurrentPosition() {
-    navigator.geolocation.getCurrentPosition((position) => {
-      alert(`${position.coords.latitude} ${position.coords.longitude}`)
-      console.log(position.coords.latitude, position.coords.longitude)
-    })
   }
 }
 

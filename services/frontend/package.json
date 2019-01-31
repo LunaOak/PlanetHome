@@ -23,6 +23,8 @@
     "typescript": "3.2.1"
   },
   "devDependencies": {
+    "@types/dotenv": "^6.1.0",
+    "dotenv": "^6.2.0",
     "enzyme": "^3.7.0",
     "enzyme-adapter-react-16": "^1.7.0",
     "jest-coverage-ratchet": "^0.2.3",
